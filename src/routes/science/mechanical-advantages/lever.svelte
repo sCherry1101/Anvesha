@@ -55,16 +55,6 @@
       <strong>{mechanicalAdvantage.toFixed(2)}×</strong>
     </div>
 
-    <div>
-      <span>Load Torque</span>
-      <strong>{loadTorque.toFixed(1)} Nm</strong>
-    </div>
-
-    <div>
-      <span>Effort Torque</span>
-      <strong>{effortTorque.toFixed(1)} Nm</strong>
-    </div>
-
   </div>
 
 </div>
