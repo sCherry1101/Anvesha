@@ -6,12 +6,12 @@
   import Lever from './lever.svelte'
   import './style.css'
 
-  let load = $state(100)
-  let effortArm = $state(1)
-  let loadArm = $state(0.2)
+let load=$state(100)
+let effort=$state(20)
+let effortArm=$state(1)
+let loadArm=$state(0.2)
 
-  let effort = $derived((load * loadArm) / effortArm)
-  let mechanicalAdvantage = $derived(load / effort)
+let mechanicalAdvantage=$derived(load/Math.max(effort,0.01))
 </script>
 
 <section class="mechanical-advantage">
@@ -25,21 +25,23 @@
       of the fulcrum.
     </p>
 
-    <Lever
-      {load}
-      {effortArm}
-      {loadArm}
-    />
+  <Lever
+  {load}
+  {effort}
+  {effortArm}
+  {loadArm}
+/>
 
   </article>
 
   <aside class="mechanical-advantage__controls">
 
-    <Controls
-      bind:load
-      bind:effortArm
-      bind:loadArm
-    />
+   <Controls
+  bind:load
+  bind:effort
+  bind:effortArm
+  bind:loadArm
+/>
 
     <Formula
       {load}

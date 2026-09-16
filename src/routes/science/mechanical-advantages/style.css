@@ -45,23 +45,28 @@
 }
 
 .lever__bar {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 90%;
   height: 14px;
   background: var(--accent);
   border-radius: 999px;
+  transform-origin: center;
+  transition: transform 0.25s ease;
 }
 
 .lever__fulcrum {
   position: absolute;
-  left: var(--load-position);
-  bottom: -85px;
+  left: 50%;
+  top: 50%;
   width: 0;
   height: 0;
   border-left: 35px solid transparent;
   border-right: 35px solid transparent;
   border-bottom: 70px solid var(--accent);
-  transform: translateX(-50%);
+  transform:translate(-50%,0);
+  z-index: 2;
 }
 
 .lever__load,

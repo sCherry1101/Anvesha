@@ -1,9 +1,10 @@
 <script>
-  let {
-    load = $bindable(),
-    effortArm = $bindable(),
-    loadArm = $bindable()
-  } = $props()
+let {
+  load=$bindable(),
+  effort=$bindable(),
+  effortArm=$bindable(),
+  loadArm=$bindable()
+}=$props()
 </script>
 
 <div class="controls">
@@ -11,6 +12,12 @@
     Load
     <input type="range" min="10" max="200" step="10" bind:value={load} />
     <span>{load} N</span>
+  </label>
+
+  <label>
+    Effort
+    <input type="range" min="0" max="100" step="5" bind:value={effort} />
+    <span>{effort} N</span>
   </label>
 
   <label>
@@ -24,4 +31,5 @@
     <input type="range" min="0.1" max="1.5" step="0.1" bind:value={loadArm} />
     <span>{loadArm} m</span>
   </label>
+
 </div>
