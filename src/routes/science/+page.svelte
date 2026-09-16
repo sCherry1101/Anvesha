@@ -6,6 +6,7 @@
   <h1>Choose your diagram below</h1>
   
   <div class="card-group">
+
     <div class="subject-card">
       <h2>Cell Organelles</h2>
       <Button href="/science/cell-organelles" variant="primary">Click here</Button>
@@ -15,6 +16,12 @@
       <h2>Periodic Table</h2>
       <Button href="/science/periodic-table" variant="primary">Click here</Button>
     </div>
+
+    <div id="mechanical_advantages" class="subject-card">
+      <h2>Mechanical Advantages</h2>
+      <Button href="/science/mechanical-advantages" variant="primary">Click here</Button>
+    </div>
+
   </div>
 </div>
 
