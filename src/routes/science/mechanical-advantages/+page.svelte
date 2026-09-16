@@ -4,6 +4,7 @@
   import Controls from './controls.svelte'
   import Formula from './formula.svelte'
   import Lever from './lever.svelte'
+  import './style.css'
 
   let load = $state(100)
   let effortArm = $state(1)

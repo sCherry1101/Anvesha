@@ -2,7 +2,7 @@
   let { load, effortArm, loadArm }=$props()
   let effort=$derived((load*loadArm)/effortArm)
   let mechanicalAdvantage=$derived(load/effort)
-  let totalLength=$derived(effortArm+loadArm
+  let totalLength=$derived(effortArm+loadArm)
   let loadPosition=$derived((effortArm/totalLength)*100)
 </script>
 
