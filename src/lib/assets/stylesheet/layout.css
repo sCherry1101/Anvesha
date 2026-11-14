@@ -1,4 +1,3 @@
-#homepage_box,
 #science_box,
 #error_div,
 #about_div,
@@ -37,7 +36,6 @@
 }
 
 @media (max-width: 768px) {
-  #homepage_box,
   #science_box,
   #error_div ,
   #about_div,
@@ -54,5 +52,14 @@
   .button-group {
     width: 100%;
   }
+}
+
+.landing-page{
+  height: 600px;
+}
+
+#login-div{
+  height: 600px;
+  width: 400px;
 }
 

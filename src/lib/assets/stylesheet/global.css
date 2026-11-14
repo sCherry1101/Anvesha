@@ -204,7 +204,6 @@ a {
   color: var(--accent);
 }
 
-#homepage_box,
 #science_box,
 #error_div,
 #about_div,
@@ -243,7 +242,6 @@ a {
 }
 
 @media (max-width: 768px) {
-  #homepage_box,
   #science_box,
   #error_div,
   #about_div,
@@ -270,3 +268,23 @@ a {
   }
 }
 
+.landing-page{
+  background-color:aquamarine;
+  color:blue;
+}
+
+#landing-page-text{
+  h1{
+    font-size: 70px;
+  }
+
+  h2{
+    font-size: 35px;
+  }
+
+}
+
+#login-div{
+  background-color: greenyellow;
+  
+}
