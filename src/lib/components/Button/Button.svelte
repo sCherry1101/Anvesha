@@ -1,18 +1,18 @@
 <script>
-  import '/src/lib/assets/stylesheet/global.css'
+import "/src/lib/assets/stylesheet/global.css";
 
-  let {
-    href = undefined,
-    variant = 'primary',
-    size = 'md',
-    disabled = false,
-    icon = undefined,
-    iconPosition = 'left',
-    onclick = undefined,
-    class: customClass = '',
-    children,
-    ...restProps
-  } = $props();
+let {
+	href = undefined,
+	variant = "primary",
+	size = "md",
+	disabled = false,
+	icon = undefined,
+	iconPosition = "left",
+	onclick = undefined,
+	class: customClass = "",
+	children,
+	...restProps
+} = $props();
 </script>
 
 {#if href}

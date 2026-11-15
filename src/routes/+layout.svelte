@@ -1,13 +1,13 @@
 <script>
-  import "$asset/stylesheet/global.css"
-  import "$asset/stylesheet/layout.css"
+import "$asset/stylesheet/global.css";
+import "$asset/stylesheet/layout.css";
 
-  import "$lib/themes/default.css"
-  import "$lib/themes/light.css"
-  import "$lib/themes/stardust.css"
-  import Navbar from "$component/Navbar"
+import "$lib/themes/default.css";
+import "$lib/themes/light.css";
+import "$lib/themes/stardust.css";
+import Navbar from "$component/Navbar";
 
-  let { children } = $props()
+let { children } = $props();
 </script>
 
 <Navbar />

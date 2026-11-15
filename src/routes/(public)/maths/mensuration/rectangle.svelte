@@ -1,186 +1,142 @@
 <script>
-  import { onMount } from 'svelte';
-  import * as THREE from 'three';
+import { onMount } from "svelte";
+import * as THREE from "three";
 
-  let container;
+let container;
 
-  onMount(() => {
-    const scene = new THREE.Scene();
+onMount(() => {
+	const scene = new THREE.Scene();
 
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+	const width = container.clientWidth;
+	const height = container.clientHeight;
 
-    const camera = new THREE.OrthographicCamera(
-      -10,
-      10,
-      7,
-      -7,
-      0.1,
-      100
-    );
+	const camera = new THREE.OrthographicCamera(-10, 10, 7, -7, 0.1, 100);
 
-    camera.position.z = 10;
+	camera.position.z = 10;
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true
-    });
+	const renderer = new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true,
+	});
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(width, height);
+	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+	renderer.setSize(width, height);
 
-    container.appendChild(renderer.domElement);
+	container.appendChild(renderer.domElement);
 
-    const group = new THREE.Group();
-    scene.add(group);
+	const group = new THREE.Group();
+	scene.add(group);
 
-    const widthValue = 7;
-    const heightValue = 4;
+	const widthValue = 7;
+	const heightValue = 4;
 
-    const halfWidth = widthValue / 2;
-    const halfHeight = heightValue / 2;
+	const halfWidth = widthValue / 2;
+	const halfHeight = heightValue / 2;
 
-    const rectangleShape = new THREE.Shape();
+	const rectangleShape = new THREE.Shape();
 
-    rectangleShape.moveTo(-halfWidth, -halfHeight);
-    rectangleShape.lineTo(halfWidth, -halfHeight);
-    rectangleShape.lineTo(halfWidth, halfHeight);
-    rectangleShape.lineTo(-halfWidth, halfHeight);
-    rectangleShape.closePath();
+	rectangleShape.moveTo(-halfWidth, -halfHeight);
+	rectangleShape.lineTo(halfWidth, -halfHeight);
+	rectangleShape.lineTo(halfWidth, halfHeight);
+	rectangleShape.lineTo(-halfWidth, halfHeight);
+	rectangleShape.closePath();
 
-    const rectangleGeometry =
-      new THREE.ShapeGeometry(rectangleShape);
+	const rectangleGeometry = new THREE.ShapeGeometry(rectangleShape);
 
-    const rectangleMaterial = new THREE.MeshBasicMaterial({
-      color: 0x7c6cff,
-      transparent: true,
-      opacity: 0.18,
-      side: THREE.DoubleSide
-    });
+	const rectangleMaterial = new THREE.MeshBasicMaterial({
+		color: 0x7c6cff,
+		transparent: true,
+		opacity: 0.18,
+		side: THREE.DoubleSide,
+	});
 
-    const rectangle = new THREE.Mesh(
-      rectangleGeometry,
-      rectangleMaterial
-    );
+	const rectangle = new THREE.Mesh(rectangleGeometry, rectangleMaterial);
 
-    group.add(rectangle);
+	group.add(rectangle);
 
-    function createLine(points, color = 0xffffff) {
-      const geometry =
-        new THREE.BufferGeometry().setFromPoints(points);
+	function createLine(points, color = 0xffffff) {
+		const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
-      const material = new THREE.LineBasicMaterial({
-        color
-      });
+		const material = new THREE.LineBasicMaterial({
+			color,
+		});
 
-      const line = new THREE.Line(
-        geometry,
-        material
-      );
+		const line = new THREE.Line(geometry, material);
 
-      group.add(line);
+		group.add(line);
 
-      return line;
-    }
+		return line;
+	}
 
-    createLine([
-      new THREE.Vector3(-halfWidth, -halfHeight, 0.01),
-      new THREE.Vector3(halfWidth, -halfHeight, 0.01),
-      new THREE.Vector3(halfWidth, halfHeight, 0.01),
-      new THREE.Vector3(-halfWidth, halfHeight, 0.01),
-      new THREE.Vector3(-halfWidth, -halfHeight, 0.01)
-    ]);
+	createLine([
+		new THREE.Vector3(-halfWidth, -halfHeight, 0.01),
+		new THREE.Vector3(halfWidth, -halfHeight, 0.01),
+		new THREE.Vector3(halfWidth, halfHeight, 0.01),
+		new THREE.Vector3(-halfWidth, halfHeight, 0.01),
+		new THREE.Vector3(-halfWidth, -halfHeight, 0.01),
+	]);
 
-    const offset = 0.7;
+	const offset = 0.7;
 
-    createLine([
-      new THREE.Vector3(
-        -halfWidth,
-        -halfHeight - offset,
-        0.02
-      ),
-      new THREE.Vector3(
-        halfWidth,
-        -halfHeight - offset,
-        0.02
-      )
-    ]);
+	createLine([
+		new THREE.Vector3(-halfWidth, -halfHeight - offset, 0.02),
+		new THREE.Vector3(halfWidth, -halfHeight - offset, 0.02),
+	]);
 
-    createLine([
-      new THREE.Vector3(
-        halfWidth + offset,
-        -halfHeight,
-        0.02
-      ),
-      new THREE.Vector3(
-        halfWidth + offset,
-        halfHeight,
-        0.02
-      )
-    ]);
+	createLine([
+		new THREE.Vector3(halfWidth + offset, -halfHeight, 0.02),
+		new THREE.Vector3(halfWidth + offset, halfHeight, 0.02),
+	]);
 
-    rectangle.scale.set(0.001, 0.001, 0.001);
+	rectangle.scale.set(0.001, 0.001, 0.001);
 
-    const start = performance.now();
+	const start = performance.now();
 
-    function animate(time) {
-      requestAnimationFrame(animate);
+	function animate(time) {
+		requestAnimationFrame(animate);
 
-      const elapsed = (time - start) / 1000;
+		const elapsed = (time - start) / 1000;
 
-      const progress = Math.min(
-        Math.max(elapsed / 0.8, 0),
-        1
-      );
+		const progress = Math.min(Math.max(elapsed / 0.8, 0), 1);
 
-      const eased =
-        1 - Math.pow(1 - progress, 3);
+		const eased = 1 - Math.pow(1 - progress, 3);
 
-      rectangle.scale.set(
-        eased,
-        eased,
-        eased
-      );
+		rectangle.scale.set(eased, eased, eased);
 
-      renderer.render(scene, camera);
-    }
+		renderer.render(scene, camera);
+	}
 
-    animate(start);
+	animate(start);
 
-    function resize() {
-      const newWidth = container.clientWidth;
-      const newHeight = container.clientHeight;
+	function resize() {
+		const newWidth = container.clientWidth;
+		const newHeight = container.clientHeight;
 
-      const aspect = newWidth / newHeight;
-      const viewSize = 7;
+		const aspect = newWidth / newHeight;
+		const viewSize = 7;
 
-      camera.left = -viewSize * aspect;
-      camera.right = viewSize * aspect;
-      camera.top = viewSize;
-      camera.bottom = -viewSize;
+		camera.left = -viewSize * aspect;
+		camera.right = viewSize * aspect;
+		camera.top = viewSize;
+		camera.bottom = -viewSize;
 
-      camera.updateProjectionMatrix();
+		camera.updateProjectionMatrix();
 
-      renderer.setSize(
-        newWidth,
-        newHeight
-      );
-    }
+		renderer.setSize(newWidth, newHeight);
+	}
 
-    resize();
+	resize();
 
-    window.addEventListener('resize', resize);
+	window.addEventListener("resize", resize);
 
-    return () => {
-      window.removeEventListener('resize', resize);
+	return () => {
+		window.removeEventListener("resize", resize);
 
-      renderer.dispose();
+		renderer.dispose();
 
-      container.removeChild(
-        renderer.domElement
-      );
-    };
-  });
+		container.removeChild(renderer.domElement);
+	};
+});
 </script>
 
 <div class="rectangle-container">

@@ -1,5 +1,5 @@
 <script>
-  let { element, onclick, disabled = false } = $props()
+let { element, onclick, disabled = false } = $props();
 </script>
 
 <button {onclick} {disabled}

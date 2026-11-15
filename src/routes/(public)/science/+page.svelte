@@ -1,5 +1,5 @@
 <script>
-  import Button from "$component/Button"
+import Button from "$component/Button";
 </script>
 
 <div id="science_box">

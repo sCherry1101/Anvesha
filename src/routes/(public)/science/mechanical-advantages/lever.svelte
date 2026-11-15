@@ -1,16 +1,16 @@
 <script>
-  let { load, effort, effortArm, loadArm }=$props()
+let { load, effort, effortArm, loadArm } = $props();
 
-  let loadTorque=$derived(load*loadArm)
-  let effortTorque=$derived(effort*effortArm)
+let loadTorque = $derived(load * loadArm);
+let effortTorque = $derived(effort * effortArm);
 
-  let mechanicalAdvantage=$derived(load/Math.max(effort,0.01))
+let mechanicalAdvantage = $derived(load / Math.max(effort, 0.01));
 
-  let torqueDifference=$derived(effortTorque-loadTorque)
+let torqueDifference = $derived(effortTorque - loadTorque);
 
-  let angle=$derived(
-    Math.max(-15,Math.min(15,torqueDifference/loadTorque*15))
-  )
+let angle = $derived(
+	Math.max(-15, Math.min(15, (torqueDifference / loadTorque) * 15)),
+);
 </script>
 
 <div class="lever">

@@ -1,58 +1,58 @@
 <script>
-  import Square from './square.svelte'
-  import Rectangle from './rectangle.svelte'
-  import Triangle from './triangle.svelte'
+import Square from "./square.svelte";
+import Rectangle from "./rectangle.svelte";
+import Triangle from "./triangle.svelte";
 
-  const views = {
-    square: "Square",
-    rectangle: "Rectangle",
-    triangle: "Triangle"
-  }
+const views = {
+	square: "Square",
+	rectangle: "Rectangle",
+	triangle: "Triangle",
+};
 
-  let active = $state('square')
+let active = $state("square");
 
-  const info = {
-    square: {
-      title: "Square",
-      description:
-        "A square is a quadrilateral with four equal sides and four right angles.",
-      formula: "P = 4a  ·  A = a²",
-      facts: [
-        "All four sides of a square have equal length.",
-        "All four interior angles are 90°.",
-        "The perimeter is four times the length of one side.",
-        "The area is the square of the side length."
-      ]
-    },
+const info = {
+	square: {
+		title: "Square",
+		description:
+			"A square is a quadrilateral with four equal sides and four right angles.",
+		formula: "P = 4a  ·  A = a²",
+		facts: [
+			"All four sides of a square have equal length.",
+			"All four interior angles are 90°.",
+			"The perimeter is four times the length of one side.",
+			"The area is the square of the side length.",
+		],
+	},
 
-    rectangle: {
-      title: "Rectangle",
-      description:
-        "A rectangle is a quadrilateral with four right angles and opposite sides equal in length.",
-      formula: "P = 2(l + w)  ·  A = l × w",
-      facts: [
-        "Opposite sides of a rectangle are equal.",
-        "All four interior angles are 90°.",
-        "The perimeter is twice the sum of its length and width.",
-        "The area is the product of its length and width."
-      ]
-    },
+	rectangle: {
+		title: "Rectangle",
+		description:
+			"A rectangle is a quadrilateral with four right angles and opposite sides equal in length.",
+		formula: "P = 2(l + w)  ·  A = l × w",
+		facts: [
+			"Opposite sides of a rectangle are equal.",
+			"All four interior angles are 90°.",
+			"The perimeter is twice the sum of its length and width.",
+			"The area is the product of its length and width.",
+		],
+	},
 
-    triangle: {
-      title: "Triangle",
-      description:
-        "A triangle is a polygon with three sides and three angles. Its area depends on its base and perpendicular height.",
-      formula: "P = a + b + c  ·  A = ½ × b × h",
-      facts: [
-        "A triangle has three sides and three interior angles.",
-        "The perimeter is the sum of all three side lengths.",
-        "The area is half the product of the base and perpendicular height.",
-        "The height must be perpendicular to the chosen base."
-      ]
-    }
-  }
+	triangle: {
+		title: "Triangle",
+		description:
+			"A triangle is a polygon with three sides and three angles. Its area depends on its base and perpendicular height.",
+		formula: "P = a + b + c  ·  A = ½ × b × h",
+		facts: [
+			"A triangle has three sides and three interior angles.",
+			"The perimeter is the sum of all three side lengths.",
+			"The area is half the product of the base and perpendicular height.",
+			"The height must be perpendicular to the chosen base.",
+		],
+	},
+};
 
-  let currentInfo = $derived(info[active])
+let currentInfo = $derived(info[active]);
 </script>
 
 <section class="mensuration">

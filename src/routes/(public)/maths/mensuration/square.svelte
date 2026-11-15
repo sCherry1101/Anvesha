@@ -1,182 +1,139 @@
 <script>
-  import { onMount } from 'svelte';
-  import * as THREE from 'three';
+import { onMount } from "svelte";
+import * as THREE from "three";
 
-  let container;
+let container;
 
-  onMount(() => {
-    const scene = new THREE.Scene();
+onMount(() => {
+	const scene = new THREE.Scene();
 
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+	const width = container.clientWidth;
+	const height = container.clientHeight;
 
-    const camera = new THREE.OrthographicCamera(
-      -10,
-      10,
-      7,
-      -7,
-      0.1,
-      100
-    );
+	const camera = new THREE.OrthographicCamera(-10, 10, 7, -7, 0.1, 100);
 
-    camera.position.z = 10;
+	camera.position.z = 10;
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true
-    });
+	const renderer = new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true,
+	});
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(width, height);
+	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+	renderer.setSize(width, height);
 
-    container.appendChild(renderer.domElement);
+	container.appendChild(renderer.domElement);
 
-    const group = new THREE.Group();
-    scene.add(group);
+	const group = new THREE.Group();
+	scene.add(group);
 
-    const side = 5;
-    const half = side / 2;
+	const side = 5;
+	const half = side / 2;
 
-    const squareShape = new THREE.Shape();
+	const squareShape = new THREE.Shape();
 
-    squareShape.moveTo(-half, -half);
-    squareShape.lineTo(half, -half);
-    squareShape.lineTo(half, half);
-    squareShape.lineTo(-half, half);
-    squareShape.closePath();
+	squareShape.moveTo(-half, -half);
+	squareShape.lineTo(half, -half);
+	squareShape.lineTo(half, half);
+	squareShape.lineTo(-half, half);
+	squareShape.closePath();
 
-    const squareGeometry = new THREE.ShapeGeometry(squareShape);
+	const squareGeometry = new THREE.ShapeGeometry(squareShape);
 
-    const squareMaterial = new THREE.MeshBasicMaterial({
-      color: 0x7c6cff,
-      transparent: true,
-      opacity: 0.18,
-      side: THREE.DoubleSide
-    });
+	const squareMaterial = new THREE.MeshBasicMaterial({
+		color: 0x7c6cff,
+		transparent: true,
+		opacity: 0.18,
+		side: THREE.DoubleSide,
+	});
 
-    const square = new THREE.Mesh(
-      squareGeometry,
-      squareMaterial
-    );
+	const square = new THREE.Mesh(squareGeometry, squareMaterial);
 
-    group.add(square);
+	group.add(square);
 
-    function createLine(points) {
-      const geometry =
-        new THREE.BufferGeometry().setFromPoints(points);
+	function createLine(points) {
+		const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
-      const material = new THREE.LineBasicMaterial({
-        color: 0xffffff
-      });
+		const material = new THREE.LineBasicMaterial({
+			color: 0xffffff,
+		});
 
-      const line = new THREE.Line(
-        geometry,
-        material
-      );
+		const line = new THREE.Line(geometry, material);
 
-      group.add(line);
+		group.add(line);
 
-      return line;
-    }
+		return line;
+	}
 
-    createLine([
-      new THREE.Vector3(-half, -half, 0.01),
-      new THREE.Vector3(half, -half, 0.01),
-      new THREE.Vector3(half, half, 0.01),
-      new THREE.Vector3(-half, half, 0.01),
-      new THREE.Vector3(-half, -half, 0.01)
-    ]);
+	createLine([
+		new THREE.Vector3(-half, -half, 0.01),
+		new THREE.Vector3(half, -half, 0.01),
+		new THREE.Vector3(half, half, 0.01),
+		new THREE.Vector3(-half, half, 0.01),
+		new THREE.Vector3(-half, -half, 0.01),
+	]);
 
-    const offset = 0.7;
+	const offset = 0.7;
 
-    createLine([
-      new THREE.Vector3(
-        -half,
-        -half - offset,
-        0.02
-      ),
-      new THREE.Vector3(
-        half,
-        -half - offset,
-        0.02
-      )
-    ]);
+	createLine([
+		new THREE.Vector3(-half, -half - offset, 0.02),
+		new THREE.Vector3(half, -half - offset, 0.02),
+	]);
 
-    createLine([
-      new THREE.Vector3(
-        half + offset,
-        -half,
-        0.02
-      ),
-      new THREE.Vector3(
-        half + offset,
-        half,
-        0.02
-      )
-    ]);
+	createLine([
+		new THREE.Vector3(half + offset, -half, 0.02),
+		new THREE.Vector3(half + offset, half, 0.02),
+	]);
 
-    square.scale.set(0.001, 0.001, 0.001);
+	square.scale.set(0.001, 0.001, 0.001);
 
-    const start = performance.now();
+	const start = performance.now();
 
-    function animate(time) {
-      requestAnimationFrame(animate);
+	function animate(time) {
+		requestAnimationFrame(animate);
 
-      const elapsed = (time - start) / 1000;
+		const elapsed = (time - start) / 1000;
 
-      const progress = Math.min(
-        Math.max(elapsed / 0.8, 0),
-        1
-      );
+		const progress = Math.min(Math.max(elapsed / 0.8, 0), 1);
 
-      const eased =
-        1 - Math.pow(1 - progress, 3);
+		const eased = 1 - Math.pow(1 - progress, 3);
 
-      square.scale.set(
-        eased,
-        eased,
-        eased
-      );
+		square.scale.set(eased, eased, eased);
 
-      renderer.render(scene, camera);
-    }
+		renderer.render(scene, camera);
+	}
 
-    animate(start);
+	animate(start);
 
-    function resize() {
-      const newWidth = container.clientWidth;
-      const newHeight = container.clientHeight;
+	function resize() {
+		const newWidth = container.clientWidth;
+		const newHeight = container.clientHeight;
 
-      const aspect = newWidth / newHeight;
-      const viewSize = 7;
+		const aspect = newWidth / newHeight;
+		const viewSize = 7;
 
-      camera.left = -viewSize * aspect;
-      camera.right = viewSize * aspect;
-      camera.top = viewSize;
-      camera.bottom = -viewSize;
+		camera.left = -viewSize * aspect;
+		camera.right = viewSize * aspect;
+		camera.top = viewSize;
+		camera.bottom = -viewSize;
 
-      camera.updateProjectionMatrix();
+		camera.updateProjectionMatrix();
 
-      renderer.setSize(
-        newWidth,
-        newHeight
-      );
-    }
+		renderer.setSize(newWidth, newHeight);
+	}
 
-    resize();
+	resize();
 
-    window.addEventListener('resize', resize);
+	window.addEventListener("resize", resize);
 
-    return () => {
-      window.removeEventListener('resize', resize);
+	return () => {
+		window.removeEventListener("resize", resize);
 
-      renderer.dispose();
+		renderer.dispose();
 
-      container.removeChild(
-        renderer.domElement
-      );
-    };
-  });
+		container.removeChild(renderer.domElement);
+	};
+});
 </script>
 
 <div class="square-container">

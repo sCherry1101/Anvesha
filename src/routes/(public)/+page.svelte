@@ -1,5 +1,5 @@
 <script>
-import Button from "$component/Button"
+import Button from "$component/Button";
 </script>
 
 
@@ -9,6 +9,13 @@ import Button from "$component/Button"
         <h2>A one-place platform where NCERT-based educational resources are simulated.</h2>
         <Button href="/about">Get Started</Button>
     </div>
+</div>
+
+<div class="landing-page-intro" id="science-intro">
+
+</div>
+
+<div class="landing-page-intro" id="maths-intro">
 </div>
 <!-- <div id="login-div">
         <Button href="/login">Login</Button>

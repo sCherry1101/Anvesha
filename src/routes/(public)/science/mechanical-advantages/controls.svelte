@@ -1,10 +1,10 @@
 <script>
 let {
-  load=$bindable(),
-  effort=$bindable(),
-  effortArm=$bindable(),
-  loadArm=$bindable()
-}=$props()
+	load = $bindable(),
+	effort = $bindable(),
+	effortArm = $bindable(),
+	loadArm = $bindable(),
+} = $props();
 </script>
 
 <div class="controls">

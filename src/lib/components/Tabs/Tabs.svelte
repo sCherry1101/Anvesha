@@ -1,11 +1,13 @@
 <script>
-  import { setContext } from 'svelte'
-  import Button from '../Button'
+import { setContext } from "svelte";
+import Button from "../Button";
 
-  let { sections, children, active = $bindable() } = $props();
-  setContext('tabs_active', {
-    get current() { return active }
-  })
+let { sections, children, active = $bindable() } = $props();
+setContext("tabs_active", {
+	get current() {
+		return active;
+	},
+});
 </script>
 
 <div class="tabs">

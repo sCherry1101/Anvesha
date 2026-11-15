@@ -1,29 +1,28 @@
 <script>
+import Pythagoras from "./pythagoras_shapes.svelte";
 
-  import Pythagoras from './pythagoras_shapes.svelte'
+const views = {
+	pt: "Pythagoras Theorem",
+};
 
-  const views = {
-    pt: "Pythagoras Theorem",
-  }
+let active = $state("pt");
 
-  let active = $state('pt')
+const info = {
+	pt: {
+		title: "Pythagoras Theorem",
+		description:
+			"In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides.",
+		formula: "a² + b² = c²",
+		facts: [
+			"The hypotenuse is the side opposite the right angle.",
+			"The hypotenuse is always the longest side of a right-angled triangle.",
+			"A square constructed on a side has an area equal to the square of that side's length.",
+			"Therefore, the areas of the two smaller squares add up to the area of the square on the hypotenuse.",
+		],
+	},
+};
 
-  const info = {
-    pt: {
-      title: "Pythagoras Theorem",
-      description:
-        "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides.",
-      formula: "a² + b² = c²",
-      facts: [
-        "The hypotenuse is the side opposite the right angle.",
-        "The hypotenuse is always the longest side of a right-angled triangle.",
-        "A square constructed on a side has an area equal to the square of that side's length.",
-        "Therefore, the areas of the two smaller squares add up to the area of the square on the hypotenuse."
-      ]
-    }
-  }
-
-  let currentInfo = $derived(info[active])
+let currentInfo = $derived(info[active]);
 </script>
 
 <section class="pythagoras">

@@ -1,21 +1,21 @@
 <script>
-  import './styling.css'
-  import Organelle from './Canvas'
-  import Tabs from '$component/Tabs'
-  import InfoCard from '$lib/data/organelles.json'
+import "./styling.css";
+import Organelle from "./Canvas";
+import Tabs from "$component/Tabs";
+import InfoCard from "$lib/data/organelles.json";
 
-  const views = {
-    ac: "Animal Cell",
-    nu: "Nucleus",
-    mi: "Mitochondria",
-    er: "Endoplasmic Reticulum",
-    ga: "Golgi Apparatus",
-    ly: "Lysosomes",
-    pc: "Plant Cell",
-    va: "Vacuoles",
-  }
-  let active = $state('ac')
-  let info = $derived(InfoCard[active]);
+const views = {
+	ac: "Animal Cell",
+	nu: "Nucleus",
+	mi: "Mitochondria",
+	er: "Endoplasmic Reticulum",
+	ga: "Golgi Apparatus",
+	ly: "Lysosomes",
+	pc: "Plant Cell",
+	va: "Vacuoles",
+};
+let active = $state("ac");
+let info = $derived(InfoCard[active]);
 </script>
 
 <section class="organelles">

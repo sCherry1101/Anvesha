@@ -1,17 +1,17 @@
 <script>
-  import '$lib/assets/stylesheet/global.css'
-  import '$lib/assets/stylesheet/layout.css'
-  import Controls from './controls.svelte'
-  import Formula from './formula.svelte'
-  import Lever from './lever.svelte'
-  import './style.css'
+import "$lib/assets/stylesheet/global.css";
+import "$lib/assets/stylesheet/layout.css";
+import Controls from "./controls.svelte";
+import Formula from "./formula.svelte";
+import Lever from "./lever.svelte";
+import "./style.css";
 
-let load=$state(100)
-let effort=$state(20)
-let effortArm=$state(1)
-let loadArm=$state(0.2)
+let load = $state(100);
+let effort = $state(20);
+let effortArm = $state(1);
+let loadArm = $state(0.2);
 
-let mechanicalAdvantage=$derived(load/Math.max(effort,0.01))
+let mechanicalAdvantage = $derived(load / Math.max(effort, 0.01));
 </script>
 
 <section class="mechanical-advantage">

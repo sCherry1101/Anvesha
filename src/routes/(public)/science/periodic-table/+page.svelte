@@ -1,13 +1,19 @@
 <script>
-  import './styling.css'
-  import elements from "$lib/data/elements.json"
-  import ElementCard from './ElementCard.svelte'
+import "./styling.css";
+import elements from "$lib/data/elements.json";
+import ElementCard from "./ElementCard.svelte";
 
-  let active = $state('H');
-  let elementInfo = $derived(elements[active])
+let active = $state("H");
+let elementInfo = $derived(elements[active]);
 
-  const periodics = ([i, e]) => !((e.atomic_number > 57 && e.atomic_number <= 71) || (e.atomic_number > 89 && e.atomic_number <= 103)) && i != "$schema"
-  const nonperiodics = ([_, e]) => (e.atomic_number >= 57 && e.atomic_number <= 71) || (e.atomic_number >= 89 && e.atomic_number <= 103)
+const periodics = ([i, e]) =>
+	!(
+		(e.atomic_number > 57 && e.atomic_number <= 71) ||
+		(e.atomic_number > 89 && e.atomic_number <= 103)
+	) && i != "$schema";
+const nonperiodics = ([_, e]) =>
+	(e.atomic_number >= 57 && e.atomic_number <= 71) ||
+	(e.atomic_number >= 89 && e.atomic_number <= 103);
 </script>
 
 <div class="element-display">

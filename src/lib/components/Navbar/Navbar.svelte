@@ -1,40 +1,40 @@
 <script>
-  import '/src/lib/assets/stylesheet/global.css'
-  import Button from '../Button'
+import "/src/lib/assets/stylesheet/global.css";
+import Button from "../Button";
 
-  let {
-    brand = 'Anvesha',
-    brandUrl = '/',
-    links = [
-      {
-        label: 'Science',
-        href: '/science'
-      },
-      {
-        label: 'Maths',
-        href: '/maths'
-      },
-      {
-        label: 'About',
-        href: '/about',
-        icon: 'lucide:info'
-      }
-    ]
-  } = $props()
+let {
+	brand = "Anvesha",
+	brandUrl = "/",
+	links = [
+		{
+			label: "Science",
+			href: "/science",
+		},
+		{
+			label: "Maths",
+			href: "/maths",
+		},
+		{
+			label: "About",
+			href: "/about",
+			icon: "lucide:info",
+		},
+	],
+} = $props();
 
-  let theme = $state('default')
-  let themeOpen = $state(false)
+let theme = $state("default");
+let themeOpen = $state(false);
 
-  function setTheme(newTheme) {
-    theme = newTheme
-    themeOpen = false
+function setTheme(newTheme) {
+	theme = newTheme;
+	themeOpen = false;
 
-    if (newTheme === 'default') {
-      document.documentElement.removeAttribute('data-theme')
-    } else {
-      document.documentElement.dataset.theme = newTheme
-    }
-  }
+	if (newTheme === "default") {
+		document.documentElement.removeAttribute("data-theme");
+	} else {
+		document.documentElement.dataset.theme = newTheme;
+	}
+}
 </script>
 
 <header class="navbar">

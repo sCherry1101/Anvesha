@@ -1,5 +1,5 @@
 <script>
-  let { load, effort, mechanicalAdvantage } = $props()
+let { load, effort, mechanicalAdvantage } = $props();
 </script>
 
 <div class="formula">
