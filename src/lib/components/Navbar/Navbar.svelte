@@ -45,45 +45,6 @@
     </a>
 
     <nav class="navbar__nav-desktop">
-      <div class="theme-switcher">
-
-        <button
-          class="theme-button"
-          class:active={themeOpen}
-          onclick={() => themeOpen = !themeOpen}
-        >
-          Themes
-          <span class="theme-arrow">⌄</span>
-        </button>
-
-        {#if themeOpen}
-          <div class="theme-menu">
-
-            <button
-              class:active={theme === 'default'}
-              onclick={() => setTheme('default')}
-            >
-              Default
-            </button>
-
-            <button
-              class:active={theme === 'light'}
-              onclick={() => setTheme('light')}
-            >
-              Light
-            </button>
-
-            <button
-              class:active={theme === 'stardust'}
-              onclick={() => setTheme('stardust')}
-            >
-              Stardust
-            </button>
-
-          </div>
-        {/if}
-
-      </div>
 
       <span class="navbar__divider"></span>
 

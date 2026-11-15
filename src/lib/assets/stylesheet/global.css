@@ -2,8 +2,7 @@
   box-sizing: border-box;
 }
 
-/* i vibecoded some of the css for testing (which i hated)i will change it when things work with something which is coded by me:) */
-
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 html,
 body {
   margin: 0;
@@ -269,19 +268,21 @@ a {
 }
 
 .landing-page{
-  background-color:aquamarine;
-  color:blue;
+  background-color:#151415 ;
+  
 }
 
 #landing-page-text{
+  font-family: 'Space Grotesk', sans-serif;
   h1{
-    font-size: 70px;
+    color: #B3882B;
+    font-size: 100px;
   }
 
   h2{
-    font-size: 35px;
+    font-size: 30px;
+    color:#C9AA89;
   }
-
 }
 
 #login-div{
