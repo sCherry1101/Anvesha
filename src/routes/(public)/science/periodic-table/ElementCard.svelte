@@ -4,8 +4,6 @@ let { element, onclick, disabled = false } = $props();
 
 <button {onclick} {disabled}
   class="element-card {element.category}"
-  md="min-w-[55px]"
-  lg="min-w-[90px]"
 >
   <span class="element-card__atomic-number">
     {element.atomic_number}

@@ -9,51 +9,140 @@
 	--noble_gas: #ba92b9;
 	--lanthanide: #d890b5;
 	--actinide: #ce9bbc;
+	--surface: #17120d;
+	--surface-raised: #211a14;
+	--border: #453934;
+	--text: #f1e7d8;
+	--muted: #a99a89;
+	--accent: #c18a46;
+}
+
+body {
+	background: var(--surface);
+	color: var(--text);
 }
 
 .element-display {
-	display: flex;
-	width: 100%;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 180px minmax(0, 1fr);
+	align-items: center;
+	gap: 2rem;
+	width: min(100% - 2rem, 850px);
+	margin: 1.5rem auto;
+	padding: 1.5rem;
+	color: #f1e7d800;
+
+	> div:first-child {
+		display: flex;
+		justify-content: center;
+	}
+
 	.element-card {
-		width: 12rem !important;
-		height: 12rem !important;
+		width: 160px !important;
+		height: 160px !important;
+		min-width: 0;
+		border-radius: 12px;
+		box-shadow: 0 8px 24px #00000035;
+
 		.element-card__atomic-number {
-			font-size: 1rem;
+			font-size: 0.85rem;
 		}
+
 		.element-card__symbol {
-			font-size: 3rem;
-			padding: 1rem 0;
+			font-size: 3.5rem;
+			padding: 0.8rem 0;
 		}
+
 		.element-card__name {
-			font-size: 1rem;
+			font-size: 0.9rem;
+		}
+	}
+
+	p {
+		margin: 0;
+		color: #000000;
+		font-size: 0.95rem;
+	}
+}
+
+@media (max-width: 550px) {
+	.element-display {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+		padding: 1rem;
+
+		.element-card {
+			width: 130px !important;
+			height: 130px !important;
+
+			.element-card__symbol {
+				font-size: 2.8rem;
+			}
 		}
 	}
 }
 
 .periodic-table {
+	width: 100%;
+	max-width: 1600px;
+	margin: auto;
+	padding: 1rem;
+	overflow-x: auto;
+
 	.periodic-table__list {
 		display: grid;
 		width: 100%;
-		padding: 2rem 2px;
+		min-width: 850px;
+		padding: 1rem 2px;
 		margin: auto;
+		gap: 5px;
 	}
+
 	.element-card {
 		cursor: pointer;
-		&:focus {
-			outline: black 3px solid;
-			transform: scale(1.2);
-			z-index: 99;
-			opacity: 1 !important;
+		border-radius: 7px;
+		border: 1px solid #00000030;
+		box-shadow: inset 0 1px #ffffff35;
+		transition:
+			transform 160ms ease,
+			filter 160ms ease,
+			box-shadow 160ms ease;
+
+		&:focus-visible {
+			outline: 2px solid var(--accent);
+			outline-offset: 3px;
+			z-index: 2;
 		}
+
 		&:not([disabled]):hover {
-			opacity: 0.7;
+			transform: translateY(-3px);
+			filter: brightness(1.12);
+			box-shadow: 0 5px 14px #00000040;
+			z-index: 2;
 		}
+
 		&[disabled] {
 			cursor: default;
+			opacity: 0.4;
 		}
+
 		.element-card__atomic-number {
 			font-size: 10px;
+			font-family: monospace;
+		}
+
+		.element-card__symbol {
+			font-weight: 700;
+			font-size: clamp(0.8rem, 1.3vw, 1.3rem);
+		}
+
+		.element-card__name {
+			font-size: clamp(0.45rem, 0.65vw, 0.7rem);
+			text-align: center;
+			margin: 0 2px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 		}
 	}
 }
@@ -61,31 +150,36 @@
 .periodic-table,
 .element-display {
 	.element-card {
-		color: black;
 		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		width: 100%;
 		height: 100%;
-		min-width: 40px;
+		min-width: 0;
 		aspect-ratio: 1 / 1;
-		transition: 50ms all;
-		border: black 2px solid;
+		padding: 5px;
+		color: #17120d;
+		border: 1px solid #00000035;
+		font-family: inherit;
+
 		.element-card__atomic-number {
 			position: absolute;
-			top: 2px;
-			left: 2px;
+			top: 5px;
+			left: 5px;
 		}
+
 		.element-card__symbol {
-			width: 100%;
-			font-family: bold;
+			line-height: 1;
+			font-weight: 800;
 		}
+
 		.element-card__name {
-			text-align: center;
-			margin: 0 4px;
-			overflow: hidden;
-			text-overflow: "..";
-			white-space: nowrap;
+			max-width: 100%;
 		}
 	}
+
 	.alkali_metal {
 		background: var(--alkali-metal);
 	}
@@ -115,5 +209,24 @@
 	}
 	.actinide {
 		background: var(--actinide);
+	}
+}
+
+@media (max-width: 900px) {
+	.periodic-table {
+		padding: 0.5rem;
+
+		.periodic-table__list {
+			min-width: 850px;
+		}
+	}
+
+	.element-display {
+		padding: 1rem;
+
+		.element-card {
+			width: 9rem !important;
+			height: 9rem !important;
+		}
 	}
 }
